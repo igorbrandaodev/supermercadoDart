@@ -1,0 +1,41 @@
+<h1>Produtos</h1>
+
+<p>Lista de produtos cadastrados no banco de dados.</p>
+
+<p *ngIf="!produtos"><em>Carregando...</em></p>
+
+<table class='table table-striped' *ngIf="produtos">
+  <thead>
+    <tr>
+      <th>Descrição</th>
+      <th>Preço</th>
+      <th>Estoque</th>
+      <th>Ações</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let produto of produtos">
+      <td>{{ produto.descricao }}</td>
+      <td>{{ produto.preco}}</td>
+      <td>{{ produto.estoque}}</td>
+      <td>
+        <div class="btn-group" role="group" aria-label="Basic example">
+          <button type="button" class="btn btn-outline-primary" (click)="VisualizarProduto(produto)">Ver</button>
+          <button type="button" class="btn btn-outline-warning" (click)="EditarProduto(produto)">Editar</button>
+          <button type="button" class="btn btn-outline-danger" (click)="ExcluirProduto(produto)">Excluir</button>
+        </div>
+      </td>
+    </tr>
+  </tbody>
+</table>
+<button class="btn btn-primary" (click)="CadastrarProduto()">Cadastrar</button>
+
+
+
+<cadastro-produto #CadastroProduto (atualizarGrid)="BuscarProdutos()"></cadastro-produto>
+<edicao-produto #EdicaoProduto [produto]="InputProduto" (atualizarGrid)="BuscarProdutos()"></edicao-produto>
+<detalhes-produto #DetalhesProduto  [produto]="InputProduto"></detalhes-produto>
+<exclusao-produto #ExclusaoProduto [produto]="InputProduto" (atualizarGrid)="BuscarProdutos()"></exclusao-produto>
+
+
+

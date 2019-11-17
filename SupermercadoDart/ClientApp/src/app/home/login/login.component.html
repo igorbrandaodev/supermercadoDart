@@ -1,0 +1,11 @@
+<form [formGroup]="loginForm" (submit)="login()">
+  <div class="form-group">
+    <label for="userID">Email</label>
+    <input #userIDInput formControlName="userID" type="email" class="form-control" id="userID" aria-describedby="emailHelp" placeholder="Digite seu email">
+  </div>
+  <div class="form-group">
+    <label for="accessKey">Senha</label>
+    <input formControlName="accessKey" type="password" class="form-control" id="accessKey" placeholder="Senha">
+  </div>
+  <button type="submit" class="btn btn-primary">Submit</button>
+</form>
